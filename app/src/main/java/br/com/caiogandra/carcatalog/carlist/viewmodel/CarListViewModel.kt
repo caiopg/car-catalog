@@ -1,14 +1,24 @@
 package br.com.caiogandra.carcatalog.carlist.viewmodel
 
 import android.app.Application
-import br.com.caiogandra.carcatalog.base.BaseView
+import android.databinding.Bindable
+import android.view.View
 import br.com.caiogandra.carcatalog.base.BaseViewModel
+import br.com.caiogandra.carcatalog.carlist.view.CarListView
 import br.com.caiogandra.carcatalog.db.DbHelper
 
-class CarListViewModel(application: Application) : BaseViewModel<BaseView?>(application) {
+class CarListViewModel(application: Application, carListView: CarListView) : BaseViewModel<CarListView>(application) {
 
-    fun setupViewModel() {
-        val cars = DbHelper.fetchAllCars()
+    private val cars = DbHelper.fetchAllCars()
+    override var view: CarListView? = carListView
+
+    @Bindable
+    fun getListVisibility() : Int {
+        return if (cars.isNotEmpty()) View.VISIBLE else View.GONE
     }
 
+    @Bindable
+    fun getEmptyWarningVisibility() : Int {
+        return if (cars.isNotEmpty()) View.GONE else View.VISIBLE
+    }
 }
