@@ -12,7 +12,7 @@ class CarListAdapter(private val cars : List<Car>) : RecyclerView.Adapter<CarLis
     }
 
     override fun getItemCount(): Int {
-        return cars.size;
+        return cars.size
     }
 
     override fun onBindViewHolder(holder: CarListViewHolder, position: Int) {
