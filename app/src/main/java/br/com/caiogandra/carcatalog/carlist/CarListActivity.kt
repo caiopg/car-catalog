@@ -1,5 +1,7 @@
 package br.com.caiogandra.carcatalog.carlist
 
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
@@ -8,6 +10,8 @@ import android.view.MenuItem
 import br.com.caiogandra.carcatalog.R
 import br.com.caiogandra.carcatalog.base.BaseActivity
 import br.com.caiogandra.carcatalog.carlist.view.CarListView
+import br.com.caiogandra.carcatalog.carlist.viewmodel.CarListViewModel
+import br.com.caiogandra.carcatalog.carlist.viewmodel.factory.CarListViewModelFactory
 import br.com.caiogandra.carcatalog.databinding.ActivityCarListBinding
 import br.com.caiogandra.carcatalog.model.Car
 import com.pawegio.kandroid.longToast
@@ -17,6 +21,11 @@ class CarListActivity: BaseActivity(), CarListView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityCarListBinding>(this, R.layout.activity_car_list)
+
+        val viewModelFactory = CarListViewModelFactory(application, this)
+        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(CarListViewModel::class.java)
+
+        binding.viewModel = viewModel
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -36,6 +45,5 @@ class CarListActivity: BaseActivity(), CarListView {
     }
 
     override fun updateCarListAdapter(recyclerView: RecyclerView, car: List<Car>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

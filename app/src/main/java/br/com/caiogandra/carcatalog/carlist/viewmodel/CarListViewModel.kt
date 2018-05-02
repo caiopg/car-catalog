@@ -9,7 +9,10 @@ import br.com.caiogandra.carcatalog.db.DbHelper
 
 class CarListViewModel(application: Application, carListView: CarListView) : BaseViewModel<CarListView>(application) {
 
-    private val cars = DbHelper.fetchAllCars()
+    @Bindable
+    val cars = DbHelper.fetchAllCars()
+
+    @Bindable
     override var view: CarListView? = carListView
 
     @Bindable

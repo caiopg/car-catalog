@@ -6,6 +6,6 @@ import br.com.caiogandra.carcatalog.carlist.view.CarListView
 import br.com.caiogandra.carcatalog.model.Car
 
 @BindingAdapter("bind:cars", "bind:view")
-fun RecyclerView.setCarListAdapter(recyclerView: RecyclerView, cars: List<Car>, view: CarListView) {
-    view.updateCarListAdapter(recyclerView, cars)
+fun RecyclerView.setCarListAdapter( cars: List<Car>, view: CarListView) {
+    view.updateCarListAdapter(this, cars)
 }

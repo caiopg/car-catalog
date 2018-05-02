@@ -9,4 +9,4 @@ open class Car (
         open var model : String = "",
         open var year : Int = 0,
         open var value : Int = 0
-    ) : RealmObject()
+    ): RealmObject()
