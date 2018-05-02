@@ -5,5 +5,5 @@ import br.com.caiogandra.carcatalog.base.BaseView
 import br.com.caiogandra.carcatalog.model.Car
 
 interface CarListView: BaseView {
-    fun updateCarListAdapter(recyclerView: RecyclerView, car: List<Car>)
+    fun updateCarListAdapter(recyclerView: RecyclerView, cars: List<Car>)
 }
