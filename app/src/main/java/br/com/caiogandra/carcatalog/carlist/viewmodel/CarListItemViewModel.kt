@@ -9,14 +9,14 @@ import br.com.caiogandra.carcatalog.model.Car
 class CarListItemViewModel(application: Application, car: Car) : BaseViewModel<BaseView?>(application) {
 
     @Bindable
-    val carYear = car.year
+    val carYear = car.year.toString()
 
     @Bindable
-    val carBrand = car.brand
+    val carBrand = car.brand.toString()
 
     @Bindable
-    val carModel = car.model
+    val carModel = car.model.toString()
 
     @Bindable
-    val carValue = car.value
+    val carValue = "R$ " + car.value
 }

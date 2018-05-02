@@ -3,6 +3,7 @@ package br.com.caiogandra.carcatalog.carlist
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
@@ -44,12 +45,16 @@ class CarListActivity: BaseActivity(), CarListView {
 
     private fun obtainViewModel(): CarListViewModel {
         val viewModelFactory = CarListViewModelFactory(application, this)
-        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(CarListViewModel::class.java)
-        return viewModel
+        return ViewModelProviders.of(this, viewModelFactory).get(CarListViewModel::class.java)
     }
 
     override fun updateCarListAdapter(recyclerView: RecyclerView, cars: List<Car>) {
-        var carListAdapter = CarListAdapter(cars)
+        val carListAdapter = CarListAdapter(application, cars)
+
+        val linearLayoutManager = LinearLayoutManager(this)
+        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+
+        recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = carListAdapter
     }
 }
