@@ -1,8 +1,8 @@
 package br.com.caiogandra.carcatalog.base
 
-import android.support.v7.app.AppCompatActivity
+import android.support.v4.app.Fragment
 
-open class BaseActivity : AppCompatActivity() {
+open class BaseFragment: Fragment() {
 
     //In case we need to add an App-wide behavior.
 }

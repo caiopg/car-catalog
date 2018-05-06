@@ -3,4 +3,8 @@
 
     <string name="car_list.menu.add">Adicionar carro</string>
     <string name="car_list.list.empty">Sua lista de carros está vazia.\nClique em "+" para adicionar carros.</string>
+
+    <string name="brand_list.list.title">Selecione a marca:</string>
+
+    <string name="model_list.list.title">Selecione o modelo:</string>
 </resources>

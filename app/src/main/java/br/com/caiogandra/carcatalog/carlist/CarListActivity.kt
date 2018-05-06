@@ -15,7 +15,9 @@ import br.com.caiogandra.carcatalog.carlist.viewmodel.CarListViewModel
 import br.com.caiogandra.carcatalog.carlist.viewmodel.factory.CarListViewModelFactory
 import br.com.caiogandra.carcatalog.databinding.ActivityCarListBinding
 import br.com.caiogandra.carcatalog.model.Car
+import br.com.caiogandra.carcatalog.newcar.NewCarFlowActivity
 import com.pawegio.kandroid.longToast
+import com.pawegio.kandroid.startActivity
 
 class CarListActivity: BaseActivity(), CarListView {
 
@@ -35,8 +37,7 @@ class CarListActivity: BaseActivity(), CarListView {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when(item?.itemId) {
             R.id.menu_car_list_add -> {
-                //todo
-                longToast("test")
+                startActivity<NewCarFlowActivity>()
                 true
             }
             else -> super.onOptionsItemSelected(item)
