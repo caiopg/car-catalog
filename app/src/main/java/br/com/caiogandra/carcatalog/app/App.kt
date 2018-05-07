@@ -1,12 +1,12 @@
 package br.com.caiogandra.carcatalog.app
 
-import android.app.Application
+import br.com.caiogandra.carcatalog.app.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
-class App: Application() {
+class App: DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
@@ -24,8 +24,8 @@ class App: Application() {
         Realm.setDefaultConfiguration(realmConfig)
     }
 
-//    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//    }
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.builder().create(this)
+    }
 
 }
