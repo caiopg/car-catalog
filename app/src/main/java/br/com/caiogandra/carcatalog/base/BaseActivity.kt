@@ -1,8 +1,8 @@
 package br.com.caiogandra.carcatalog.base
 
-import android.support.v7.app.AppCompatActivity
+import dagger.android.support.DaggerAppCompatActivity
 
-open class BaseActivity : AppCompatActivity() {
+open class BaseActivity : DaggerAppCompatActivity() {
 
     //In case we need to add an App-wide behavior.
 }

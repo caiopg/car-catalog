@@ -27,7 +27,7 @@ class CarListAdapter(private val application: Application, private val cars : Li
     }
 
     override fun onBindViewHolder(holder: CarListViewHolder, position: Int) {
-        val viewModel = CarListItemViewModel(application, cars[position])
+        val viewModel = CarListItemViewModel(cars[position])
         holder.viewBinding.viewModel = viewModel
     }
 

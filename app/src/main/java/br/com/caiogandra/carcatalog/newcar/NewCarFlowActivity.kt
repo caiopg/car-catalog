@@ -1,5 +1,6 @@
 package br.com.caiogandra.carcatalog.newcar
 
+import android.app.Fragment
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import br.com.caiogandra.carcatalog.R
@@ -9,12 +10,15 @@ import br.com.caiogandra.carcatalog.brandlist.BrandListFragment
 import br.com.caiogandra.carcatalog.databinding.ActivityCarListBinding
 import br.com.caiogandra.carcatalog.modellist.ModelListFragment
 import br.com.caiogandra.carcatalog.newcar.controller.FragmentController
+import dagger.android.AndroidInjection
 
 class NewCarFlowActivity: BaseActivity(), FragmentController {
 
     var fragmentMap = HashMap<String?, String?>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
+
         super.onCreate(savedInstanceState)
         DataBindingUtil.setContentView<ActivityCarListBinding>(this, R.layout.activity_new_car_flow)
 
@@ -40,7 +44,7 @@ class NewCarFlowActivity: BaseActivity(), FragmentController {
     }
 
     override fun startFlow() {
-        supportFragmentManager.beginTransaction().replace(R.id.new_car_flow_container, BrandListFragment.newInstance())
+        supportFragmentManager.beginTransaction().replace(R.id.new_car_flow_container, BrandListFragment.newInstance()).commit()
     }
 
     override fun nextFragment() {

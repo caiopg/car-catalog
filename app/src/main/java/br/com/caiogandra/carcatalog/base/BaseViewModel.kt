@@ -1,11 +1,10 @@
 package br.com.caiogandra.carcatalog.base
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
+import android.arch.lifecycle.ViewModel
 import android.databinding.Observable
 import android.databinding.PropertyChangeRegistry
 
-open class BaseViewModel<V : BaseView?>(application: Application) : AndroidViewModel(application), Observable {
+open class BaseViewModel<V : BaseView?>: ViewModel(), Observable {
 
     private val registry = PropertyChangeRegistry()
 

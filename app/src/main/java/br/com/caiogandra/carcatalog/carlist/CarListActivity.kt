@@ -18,10 +18,13 @@ import br.com.caiogandra.carcatalog.model.Car
 import br.com.caiogandra.carcatalog.newcar.NewCarFlowActivity
 import com.pawegio.kandroid.longToast
 import com.pawegio.kandroid.startActivity
+import dagger.android.AndroidInjection
 
 class CarListActivity: BaseActivity(), CarListView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
+
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityCarListBinding>(this, R.layout.activity_car_list)
         val viewModel = obtainViewModel()
@@ -45,7 +48,7 @@ class CarListActivity: BaseActivity(), CarListView {
     }
 
     private fun obtainViewModel(): CarListViewModel {
-        val viewModelFactory = CarListViewModelFactory(application, this)
+        val viewModelFactory = CarListViewModelFactory(this)
         return ViewModelProviders.of(this, viewModelFactory).get(CarListViewModel::class.java)
     }
 

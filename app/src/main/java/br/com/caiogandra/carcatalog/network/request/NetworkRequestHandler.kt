@@ -6,31 +6,30 @@ import br.com.caiogandra.carcatalog.network.data.DataWrapper
 import retrofit2.Call
 import retrofit2.Response
 
-abstract class NetworkRequestHandler<R> {
+class NetworkRequestHandler {
+    companion object {
+        fun <R> doRequest(call: Call<Response<R>>): LiveData<DataWrapper<R>> {
+            val liveData = MutableLiveData<DataWrapper<R>>()
+            val dataWrapper = DataWrapper<R>()
 
-    abstract fun makeRequest(): Call<Response<R>>
+            call.enqueue(object : NetworkCallback<R>() {
+                override fun handleResponseData(data: R?) {
+                    dataWrapper.data = data
+                    liveData.value = dataWrapper
+                }
 
-    fun createRequest(): LiveData<DataWrapper<R>> {
-        val liveData = MutableLiveData<DataWrapper<R>>()
-        val dataWrapper = DataWrapper<R>()
+                override fun handleError(response: Response<Response<R>>?) {
+                    //todo
+                }
 
-        makeRequest().enqueue(object: NetworkCallback<R>(){
-            override fun handleResponseData(data: R?) {
-                dataWrapper.data = data
-                liveData.value = dataWrapper
-            }
+                override fun handleThrowable(throwable: Throwable?) {
+                    dataWrapper.apiThrowable = throwable
+                    liveData.value = dataWrapper
+                }
 
-            override fun handleError(response: Response<Response<R>>?) {
-                //todo
-            }
+            })
 
-            override fun handleThrowable(throwable: Throwable?) {
-                dataWrapper.apiThrowable = throwable
-                liveData.value = dataWrapper
-            }
-
-        })
-
-        return liveData
+            return liveData
+        }
     }
 }
