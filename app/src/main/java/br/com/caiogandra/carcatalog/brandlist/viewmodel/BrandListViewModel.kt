@@ -11,7 +11,7 @@ import br.com.caiogandra.carcatalog.network.request.NetworkRequestHandler
 
 class BrandListViewModel(private val fipeApi: FipeApi) : BaseViewModel<BaseView?>() {
 
-    fun fetchBrands(): LiveData<DataWrapper<Brands>> {
+    fun fetchBrands(): LiveData<DataWrapper<List<Brand>>> {
         return NetworkRequestHandler.doRequest(fipeApi.fetchBrands())
     }
 

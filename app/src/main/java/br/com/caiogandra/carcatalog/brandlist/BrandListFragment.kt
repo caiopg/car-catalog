@@ -36,8 +36,8 @@ class BrandListFragment: BaseFragment() {
 
         viewModel.fetchBrands().observe(
                 this,
-                NetworkObserver(object: NetworkListener<Brands>{
-                    override fun onSuccess(dataWrapper: Brands?) {
+                NetworkObserver(object: NetworkListener<List<Brand>>{
+                    override fun onSuccess(dataWrapper: List<Brand>?) {
                         longToast("YES!!")
                     }
 

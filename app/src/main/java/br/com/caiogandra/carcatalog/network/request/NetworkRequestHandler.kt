@@ -4,11 +4,12 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import br.com.caiogandra.carcatalog.network.data.DataWrapper
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class NetworkRequestHandler {
     companion object {
-        fun <R> doRequest(call: Call<Response<R>>): LiveData<DataWrapper<R>> {
+        fun <R> doRequest(call: Call<R>): LiveData<DataWrapper<R>> {
             val liveData = MutableLiveData<DataWrapper<R>>()
             val dataWrapper = DataWrapper<R>()
 
@@ -18,7 +19,7 @@ class NetworkRequestHandler {
                     liveData.value = dataWrapper
                 }
 
-                override fun handleError(response: Response<Response<R>>?) {
+                override fun handleError(response: Response<R>?) {
                     //todo
                 }
 
