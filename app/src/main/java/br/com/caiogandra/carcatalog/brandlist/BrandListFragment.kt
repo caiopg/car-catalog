@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import br.com.caiogandra.carcatalog.R
 import br.com.caiogandra.carcatalog.base.BaseFragment
 import br.com.caiogandra.carcatalog.brandlist.viewmodel.BrandListViewModel
@@ -27,21 +29,23 @@ class BrandListFragment: BaseFragment() {
         }
     }
 
+    private lateinit var binding: FragmentBrandListBinding
+
     @Inject lateinit var viewModel: BrandListViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding = DataBindingUtil.inflate<FragmentBrandListBinding>(inflater,
+        binding = DataBindingUtil.inflate<FragmentBrandListBinding>(inflater,
                 R.layout.fragment_brand_list, container, false)
 
         viewModel.fetchBrands().observe(
                 this,
                 NetworkObserver(object: NetworkListener<List<Brand>>{
                     override fun onSuccess(dataWrapper: List<Brand>?) {
-                        longToast("YES!!")
+                        updateRadioGroup(dataWrapper)
                     }
 
                     override fun onException(throwable: Throwable?) {
-                        longToast("NO..")
+                        //todo
                     }
                 })
         )
@@ -53,6 +57,21 @@ class BrandListFragment: BaseFragment() {
         AndroidSupportInjection.inject(this)
 
         super.onAttach(context)
+    }
+
+    private fun updateRadioGroup(brands: List<Brand>?) {
+        if(brands !=  null) {
+            brands.forEach {
+                var radioButton = RadioButton(activity)
+                radioButton.text = it.brand
+                radioButton.tag = it.brand
+
+                val layoutParams = RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT,
+                        RadioGroup.LayoutParams.MATCH_PARENT)
+
+                binding.brandListRadioGroup.addView(radioButton, layoutParams)
+            }
+        }
     }
 
 }
