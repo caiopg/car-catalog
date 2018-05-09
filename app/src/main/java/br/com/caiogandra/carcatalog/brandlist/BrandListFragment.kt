@@ -11,7 +11,6 @@ import br.com.caiogandra.carcatalog.base.BaseFragment
 import br.com.caiogandra.carcatalog.brandlist.viewmodel.BrandListViewModel
 import br.com.caiogandra.carcatalog.databinding.FragmentBrandListBinding
 import br.com.caiogandra.carcatalog.model.response.Brand
-import br.com.caiogandra.carcatalog.model.response.Brands
 import br.com.caiogandra.carcatalog.network.listener.NetworkListener
 import br.com.caiogandra.carcatalog.network.request.NetworkObserver
 import com.pawegio.kandroid.longToast
@@ -28,7 +27,7 @@ class BrandListFragment: BaseFragment() {
         }
     }
 
-    @Inject lateinit var  viewModel: BrandListViewModel
+    @Inject lateinit var viewModel: BrandListViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<FragmentBrandListBinding>(inflater,

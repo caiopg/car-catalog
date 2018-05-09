@@ -1,6 +1,5 @@
 package br.com.caiogandra.carcatalog.newcar
 
-import android.app.Fragment
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import br.com.caiogandra.carcatalog.R
