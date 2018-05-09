@@ -34,8 +34,8 @@ class BrandListFragment: BaseFragment() {
     @Inject lateinit var viewModel: BrandListViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate<FragmentBrandListBinding>(inflater,
-                R.layout.fragment_brand_list, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_brand_list, container, false)
+        binding.viewModel = viewModel
 
         viewModel.fetchBrands().observe(
                 this,
@@ -61,10 +61,11 @@ class BrandListFragment: BaseFragment() {
 
     private fun updateRadioGroup(brands: List<Brand>?) {
         if(brands !=  null) {
-            brands.forEach {
+
+            brands.forEachIndexed { index, brand ->
                 var radioButton = RadioButton(activity)
-                radioButton.text = it.brand
-                radioButton.tag = it.brand
+                radioButton.text = brand.brand
+                radioButton.id = index
 
                 val layoutParams = RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT,
                         RadioGroup.LayoutParams.MATCH_PARENT)

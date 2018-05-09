@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="br.com.caiogandra.carcatalog.brandlist.viewmodel.BrandListViewModel"/>
+    </data>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -33,7 +39,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:onCheckedChanged="@{viewModel::onBrandChanged}">
 
                 </RadioGroup>
 
@@ -45,8 +52,11 @@
             android:id="@id/brand_list_next_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/car_list.menu.add"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:text="@string/brand_list.button.text"
+            android:onClick="@{viewModel::onNextClicked}"
+            android:enabled="@{viewModel.buttonEnabled()}"
+            android:clickable="@{viewModel.buttonEnabled()}"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </android.support.constraint.ConstraintLayout>
 
