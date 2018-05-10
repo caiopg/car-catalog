@@ -6,8 +6,10 @@ interface CarController {
 
     fun updateModel(model: String)
 
-    fun updateYear(year: Int)
+    fun updateYear(year: String)
 
     fun updateValue(value: Int)
+
+    fun updateFipeCode(fipeCode: String)
 
 }

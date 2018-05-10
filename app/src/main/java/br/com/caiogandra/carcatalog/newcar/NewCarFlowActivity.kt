@@ -7,16 +7,16 @@ import br.com.caiogandra.carcatalog.base.BaseActivity
 import br.com.caiogandra.carcatalog.base.BaseFragment
 import br.com.caiogandra.carcatalog.brandlist.BrandListFragment
 import br.com.caiogandra.carcatalog.databinding.ActivityCarListBinding
-import br.com.caiogandra.carcatalog.datasource.CarRepository
 import br.com.caiogandra.carcatalog.model.Car
-import br.com.caiogandra.carcatalog.modellist.ModelListFragment
+import br.com.caiogandra.carcatalog.completemodellist.CompleteModelListFragment
+import br.com.caiogandra.carcatalog.datasource.CarRepository
 import br.com.caiogandra.carcatalog.newcar.controller.CarController
 import br.com.caiogandra.carcatalog.newcar.controller.FragmentController
 import dagger.android.AndroidInjection
 
 class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
 
-    private val FIRST_FRAGMENT_TAG = ModelListFragment.TAG
+    private val FIRST_FRAGMENT_TAG = BrandListFragment.TAG
 
     private var fragmentMap = HashMap<String, String>()
     var car: Car = Car(id = CarRepository.fetchTotalCars())
@@ -32,7 +32,7 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
     }
 
     fun setupFragmentMap() {
-        fragmentMap = hashMapOf(BrandListFragment.TAG to ModelListFragment.TAG)
+        fragmentMap = hashMapOf(BrandListFragment.TAG to CompleteModelListFragment.TAG)
     }
 
     fun fetchNextFragment(tag: String): BaseFragment{
@@ -45,8 +45,8 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
             BrandListFragment.TAG -> {
                 BrandListFragment.newInstance()
             }
-            ModelListFragment.TAG -> {
-                ModelListFragment.newInstance()
+            CompleteModelListFragment.TAG -> {
+                CompleteModelListFragment.newInstance()
             }
             else -> throw IllegalStateException("Unidentified TAG.")
         }
@@ -72,11 +72,15 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
         //todo
     }
 
-    override fun updateYear(year: Int) {
+    override fun updateYear(year: String) {
         //todo
     }
 
     override fun updateValue(value: Int) {
+        //todo
+    }
+
+    override fun updateFipeCode(fipeCode: String) {
         //todo
     }
 }

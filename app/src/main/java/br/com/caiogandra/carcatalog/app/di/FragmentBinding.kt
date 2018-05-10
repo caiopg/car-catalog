@@ -2,7 +2,7 @@ package br.com.caiogandra.carcatalog.app.di
 
 import br.com.caiogandra.carcatalog.brandlist.BrandListFragment
 import br.com.caiogandra.carcatalog.brandlist.di.BrandListFragmentModule
-import br.com.caiogandra.carcatalog.modellist.ModelListFragment
+import br.com.caiogandra.carcatalog.completemodellist.CompleteModelListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -13,5 +13,5 @@ abstract class FragmentBinding {
     abstract fun bindBrandListFragment(): BrandListFragment
 
     @ContributesAndroidInjector
-    abstract fun bindModelListFragment(): ModelListFragment
+    abstract fun bindModelListFragment(): CompleteModelListFragment
 }
