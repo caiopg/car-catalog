@@ -2,6 +2,7 @@ package br.com.caiogandra.carcatalog.app.di
 
 import br.com.caiogandra.carcatalog.carlist.CarListActivity
 import br.com.caiogandra.carcatalog.newcar.NewCarFlowActivity
+import br.com.caiogandra.carcatalog.newcar.di.NewCarFlowActivityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -11,6 +12,6 @@ abstract class ActivityBinding {
     @ContributesAndroidInjector
     abstract fun bindCarListActivity(): CarListActivity
 
-    @ContributesAndroidInjector(modules = [FragmentBinding::class])
+    @ContributesAndroidInjector(modules = [FragmentBinding::class, NewCarFlowActivityModule::class])
     abstract fun bindNewCarFlowActivity(): NewCarFlowActivity
 }

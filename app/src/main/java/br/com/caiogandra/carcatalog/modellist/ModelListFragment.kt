@@ -12,7 +12,7 @@ import br.com.caiogandra.carcatalog.databinding.FragmentModelListBinding
 class ModelListFragment: BaseFragment() {
 
     companion object {
-        val TAG = ModelListFragment::class.simpleName
+        val TAG = ModelListFragment::class.simpleName!!
 
         fun newInstance(): ModelListFragment {
             return ModelListFragment()

@@ -22,7 +22,7 @@ import javax.inject.Inject
 class BrandListFragment: BaseFragment() {
 
     companion object {
-        val TAG = BrandListFragment::class.simpleName
+        val TAG = BrandListFragment::class.simpleName!!
 
         fun newInstance(): BrandListFragment {
             return BrandListFragment()
@@ -60,18 +60,19 @@ class BrandListFragment: BaseFragment() {
     }
 
     private fun updateRadioGroup(brands: List<Brand>?) {
-        if(brands !=  null) {
+        brands?.forEachIndexed { index, brand ->
+            var radioButton = RadioButton(activity)
+            radioButton.text = brand.brand
+            radioButton.id = index
 
-            brands.forEachIndexed { index, brand ->
-                var radioButton = RadioButton(activity)
-                radioButton.text = brand.brand
-                radioButton.id = index
+            val layoutParams = RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT,
+                    RadioGroup.LayoutParams.MATCH_PARENT)
 
-                val layoutParams = RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT,
-                        RadioGroup.LayoutParams.MATCH_PARENT)
+            binding.brandListRadioGroup.addView(radioButton, layoutParams)
+        }
 
-                binding.brandListRadioGroup.addView(radioButton, layoutParams)
-            }
+        if(brands != null) {
+            viewModel.brands = brands
         }
     }
 
