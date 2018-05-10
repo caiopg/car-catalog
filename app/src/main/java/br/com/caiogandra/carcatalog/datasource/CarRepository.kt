@@ -1,9 +1,9 @@
-package br.com.caiogandra.carcatalog.db
+package br.com.caiogandra.carcatalog.datasource
 
 import br.com.caiogandra.carcatalog.model.Car
 import com.vicpin.krealmextensions.queryAll
 
-object DbHelper {
+object CarRepository {
 
     fun fetchAllCars() : List<Car>{
         return Car().queryAll()

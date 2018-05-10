@@ -4,12 +4,12 @@ import android.databinding.Bindable
 import android.view.View
 import br.com.caiogandra.carcatalog.base.BaseViewModel
 import br.com.caiogandra.carcatalog.carlist.view.CarListView
-import br.com.caiogandra.carcatalog.db.DbHelper
+import br.com.caiogandra.carcatalog.datasource.CarRepository
 
 class CarListViewModel(carListView: CarListView) : BaseViewModel<CarListView>() {
 
     @Bindable
-    var cars = DbHelper.fetchAllCars()
+    var cars = CarRepository.fetchAllCars()
 
     @Bindable
     override var view: CarListView? = carListView
