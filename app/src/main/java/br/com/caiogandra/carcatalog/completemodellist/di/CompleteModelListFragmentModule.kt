@@ -14,4 +14,7 @@ class CompleteModelListFragmentModule {
     fun providesCompleteModelListViewModel(fragment: CompleteModelListFragment, factory: CompleteModelListViewModelFactory): CompleteModelListViewModel {
         return ViewModelProviders.of(fragment, factory).get(CompleteModelListViewModel::class.java)
     }
+
+    @Provides
+    fun providesCompleteModelListView()
 }

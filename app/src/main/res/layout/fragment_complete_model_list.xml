@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/complete_model_list.button.text"
-            android:onClick="@{viewModel::onNextClicked}"
+            android:onClick="@{viewModel::onCreateClicked}"
             android:enabled="@{viewModel.buttonEnabled()}"
             android:clickable="@{viewModel.buttonEnabled()}"
             app:layout_constraintBottom_toBottomOf="parent"/>

@@ -1,6 +1,7 @@
 package br.com.caiogandra.carcatalog.network
 
 import br.com.caiogandra.carcatalog.model.response.Brand
+import br.com.caiogandra.carcatalog.model.response.CompleteCar
 import br.com.caiogandra.carcatalog.model.response.CompleteModel
 import retrofit2.Call
 import retrofit2.http.GET
@@ -15,6 +16,6 @@ interface FipeApi {
     fun fetchModels(@Path("brand") brand: String): Call<List<CompleteModel>>
 
     @GET("/cars/{fipeCode}/{year}")
-    fun fetchValue(@Path("fipeCode") fipeCode: Int, @Path("year") year: Int)
+    fun fetchValue(@Path("fipeCode") fipeCode: String, @Path("year") year: String): Call<CompleteCar>
 
 }

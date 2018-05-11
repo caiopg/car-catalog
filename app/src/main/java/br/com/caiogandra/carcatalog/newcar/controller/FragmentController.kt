@@ -4,7 +4,7 @@ interface FragmentController {
 
     fun exitFlow()
 
-    fun goToNextFragment(tag: String)
+    fun goToNextFragment()
 
     fun startFlow()
 

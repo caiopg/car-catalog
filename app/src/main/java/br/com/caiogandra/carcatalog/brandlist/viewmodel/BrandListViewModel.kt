@@ -27,7 +27,7 @@ class BrandListViewModel(private val fipeRepositoryImpl: FipeRepositoryImpl,
 
     fun onNextClicked(@Suppress("UNUSED_PARAMETER") view: View) {
         carController.updateBrand(brands[selectedBrandId].brand)
-        fragmentController.goToNextFragment(BrandListFragment.TAG)
+        fragmentController.goToNextFragment()
     }
 
     fun onBrandChanged(@Suppress("UNUSED_PARAMETER") radioGroup: RadioGroup, checkedId: Int) {

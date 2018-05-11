@@ -3,6 +3,7 @@ package br.com.caiogandra.carcatalog.datasource.implementation
 import android.arch.lifecycle.LiveData
 import br.com.caiogandra.carcatalog.datasource.FipeRepository
 import br.com.caiogandra.carcatalog.model.response.Brand
+import br.com.caiogandra.carcatalog.model.response.CompleteCar
 import br.com.caiogandra.carcatalog.model.response.CompleteModel
 import br.com.caiogandra.carcatalog.network.FipeApi
 import br.com.caiogandra.carcatalog.network.data.DataWrapper
@@ -17,5 +18,9 @@ class FipeRepositoryImpl @Inject constructor(private val fipeApi: FipeApi): Fipe
 
     override fun fetchBrands(): LiveData<DataWrapper<List<Brand>>> {
         return NetworkRequestHandler.doRequest(fipeApi.fetchBrands())
+    }
+
+    override fun fetchCompleteCar(fipeCode: String, year: String): LiveData<DataWrapper<CompleteCar>> {
+        return NetworkRequestHandler.doRequest(fipeApi.fetchValue(fipeCode, year))
     }
 }

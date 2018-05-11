@@ -3,6 +3,7 @@ package br.com.caiogandra.carcatalog.completemodellist
 import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,15 +11,19 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import br.com.caiogandra.carcatalog.R
 import br.com.caiogandra.carcatalog.base.BaseFragment
+import br.com.caiogandra.carcatalog.completemodellist.view.CompleteModelListView
 import br.com.caiogandra.carcatalog.completemodellist.viewmodel.CompleteModelListViewModel
 import br.com.caiogandra.carcatalog.databinding.FragmentCompleteModelListBinding
+import br.com.caiogandra.carcatalog.model.response.CompleteCar
 import br.com.caiogandra.carcatalog.model.response.CompleteModel
 import br.com.caiogandra.carcatalog.network.listener.NetworkListener
 import br.com.caiogandra.carcatalog.network.request.NetworkObserver
 import dagger.android.support.AndroidSupportInjection
+import java.text.NumberFormat
+import java.util.*
 import javax.inject.Inject
 
-class CompleteModelListFragment: BaseFragment() {
+class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
 
     companion object {
         val TAG = CompleteModelListFragment::class.simpleName!!
@@ -73,6 +78,36 @@ class CompleteModelListFragment: BaseFragment() {
         if(completeModels != null) {
             viewModel.completeModels = completeModels
         }
+    }
+
+    override fun showSummaryDialog(fipeCode: String, year: String) {
+        viewModel.fetchCompleteCar(fipeCode, year).observe(this, NetworkObserver(object: NetworkListener<CompleteCar>{
+            override fun onSuccess(dataWrapper: CompleteCar?) {
+                val builder = context?.let { AlertDialog.Builder(it) }
+
+                if (builder != null) {
+                    with(builder) {
+                        setTitle(R.string.complete_model_list_dialog_title)
+
+                        val ptBr = Locale("pt", "BR")
+                        val valueReal = NumberFormat.getCurrencyInstance(ptBr).format(dataWrapper!!.value)
+                        with(dataWrapper) {
+                            val content = String.format(getString(R.string.complete_model_list_dialog_text),
+                                    dataWrapper!!.brand, dataWrapper!!.model, dataWrapper!!.year, valueReal)
+
+                        setMessage(content)
+                        }
+
+                        builder.create()
+                        builder.show()
+                    }
+                }
+            }
+
+            override fun onException(throwable: Throwable?) {
+                //todo
+            }
+        }))
     }
 
 }

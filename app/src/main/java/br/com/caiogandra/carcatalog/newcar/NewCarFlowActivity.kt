@@ -16,9 +16,6 @@ import dagger.android.AndroidInjection
 
 class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
 
-    private val FIRST_FRAGMENT_TAG = BrandListFragment.TAG
-
-    private var fragmentMap = HashMap<String, String>()
     var car: Car = Car(id = CarRepository.fetchTotalCars())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,37 +24,15 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
         super.onCreate(savedInstanceState)
         DataBindingUtil.setContentView<ActivityCarListBinding>(this, R.layout.activity_new_car_flow)
 
-        setupFragmentMap()
         startFlow()
     }
 
-    fun setupFragmentMap() {
-        fragmentMap = hashMapOf(BrandListFragment.TAG to CompleteModelListFragment.TAG)
-    }
-
-    fun fetchNextFragment(tag: String): BaseFragment{
-        return fetchFragment(fragmentMap[tag]!!)
-    }
-
-    fun fetchFragment(tag: String): BaseFragment{
-
-        return when(tag) {
-            BrandListFragment.TAG -> {
-                BrandListFragment.newInstance()
-            }
-            CompleteModelListFragment.TAG -> {
-                CompleteModelListFragment.newInstance()
-            }
-            else -> throw IllegalStateException("Unidentified TAG.")
-        }
-    }
-
     override fun startFlow() {
-        supportFragmentManager.beginTransaction().replace(R.id.new_car_flow_container, fetchFragment(FIRST_FRAGMENT_TAG)).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.new_car_flow_container, BrandListFragment.newInstance()).commit()
     }
 
-    override fun goToNextFragment(tag: String) {
-        supportFragmentManager.beginTransaction().replace(R.id.new_car_flow_container, fetchNextFragment(tag)).commit()
+    override fun goToNextFragment() {
+        supportFragmentManager.beginTransaction().replace(R.id.new_car_flow_container, CompleteModelListFragment.newInstance()).commit()
     }
 
     override fun exitFlow() {
