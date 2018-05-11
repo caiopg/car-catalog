@@ -1,11 +1,14 @@
 <resources>
     <string name="app_name">Car Catalog</string>
 
+    <string name="general.next">Proximo</string>
+
     <string name="car_list.menu.add">Adicionar carro</string>
     <string name="car_list.list.empty">Sua lista de carros está vazia.\nClique em "+" para adicionar carros.</string>
 
     <string name="brand_list.list.title">Selecione a marca:</string>
-    <string name="brand_list.button.text">Proximo</string>
+    <string name="brand_list.button.text">@string/general.next</string>
 
     <string name="complete_model_list.list.title">Selecione o modelo e ano:</string>
+    <string name="complete_model_list.button.text">@string/general.next</string>
 </resources>

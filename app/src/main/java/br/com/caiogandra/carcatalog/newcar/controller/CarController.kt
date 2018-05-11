@@ -12,4 +12,6 @@ interface CarController {
 
     fun updateFipeCode(fipeCode: String)
 
+    fun getBrand(): String
+
 }

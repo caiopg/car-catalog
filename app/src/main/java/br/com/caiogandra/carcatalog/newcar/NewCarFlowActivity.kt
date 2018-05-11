@@ -69,18 +69,22 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
     }
 
     override fun updateModel(model: String) {
-        //todo
+        car.model = model
     }
 
     override fun updateYear(year: String) {
-        //todo
+        car.year = year
     }
 
     override fun updateValue(value: Int) {
-        //todo
+        car.value
     }
 
     override fun updateFipeCode(fipeCode: String) {
-        //todo
+        car.fipeCode
+    }
+
+    override fun getBrand(): String {
+        return car.brand
     }
 }

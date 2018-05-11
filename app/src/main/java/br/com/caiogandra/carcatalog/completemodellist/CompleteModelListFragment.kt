@@ -1,13 +1,22 @@
 package br.com.caiogandra.carcatalog.completemodellist
 
+import android.content.Context
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import br.com.caiogandra.carcatalog.R
 import br.com.caiogandra.carcatalog.base.BaseFragment
+import br.com.caiogandra.carcatalog.completemodellist.viewmodel.CompleteModelListViewModel
 import br.com.caiogandra.carcatalog.databinding.FragmentCompleteModelListBinding
+import br.com.caiogandra.carcatalog.model.response.CompleteModel
+import br.com.caiogandra.carcatalog.network.listener.NetworkListener
+import br.com.caiogandra.carcatalog.network.request.NetworkObserver
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 class CompleteModelListFragment: BaseFragment() {
 
@@ -19,13 +28,51 @@ class CompleteModelListFragment: BaseFragment() {
         }
     }
 
+    private lateinit var binding: FragmentCompleteModelListBinding
+
+    @Inject lateinit var viewModel: CompleteModelListViewModel
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding = DataBindingUtil.inflate<FragmentCompleteModelListBinding>(inflater,
-                R.layout.fragment_complete_model_list, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_complete_model_list, container, false)
+        binding.viewModel = viewModel
+
+        viewModel.fetchCompleteModels().observe(
+                this,
+                NetworkObserver(object: NetworkListener<List<CompleteModel>> {
+                    override fun onSuccess(dataWrapper: List<CompleteModel>?) {
+                        updateRadioGroup(dataWrapper)
+                    }
+
+                    override fun onException(throwable: Throwable?) {
+                        //todo
+                    }
+                })
+        )
 
         return binding.root
+    }
 
-        //todo similar to brand
+    override fun onAttach(context: Context?) {
+        AndroidSupportInjection.inject(this)
+
+        super.onAttach(context)
+    }
+
+    private fun updateRadioGroup(completeModels: List<CompleteModel>?) {
+        completeModels?.forEachIndexed { index, completeModel ->
+            var radioButton = RadioButton(activity)
+            radioButton.text = completeModel.model + " - " + completeModel.year
+            radioButton.id = index
+
+            val layoutParams = RadioGroup.LayoutParams(RadioGroup.LayoutParams.WRAP_CONTENT,
+                    RadioGroup.LayoutParams.MATCH_PARENT)
+
+            binding.completeModelListRadioGroup.addView(radioButton, layoutParams)
+        }
+
+        if(completeModels != null) {
+            viewModel.completeModels = completeModels
+        }
     }
 
 }
