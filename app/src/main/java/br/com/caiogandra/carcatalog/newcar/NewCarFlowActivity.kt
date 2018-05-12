@@ -1,10 +1,10 @@
 package br.com.caiogandra.carcatalog.newcar
 
+import android.app.Activity
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import br.com.caiogandra.carcatalog.R
 import br.com.caiogandra.carcatalog.base.BaseActivity
-import br.com.caiogandra.carcatalog.base.BaseFragment
 import br.com.caiogandra.carcatalog.brandlist.BrandListFragment
 import br.com.caiogandra.carcatalog.databinding.ActivityCarListBinding
 import br.com.caiogandra.carcatalog.model.Car
@@ -15,6 +15,10 @@ import br.com.caiogandra.carcatalog.newcar.controller.FragmentController
 import dagger.android.AndroidInjection
 
 class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
+
+    companion object {
+        val REQUEST_CODE = 1
+    }
 
     var car: Car = Car(id = CarRepository.fetchTotalCars())
 
@@ -36,7 +40,8 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
     }
 
     override fun exitFlow() {
-        //todo
+        setResult(Activity.RESULT_OK)
+        finish()
     }
 
     override fun updateBrand(brand: String) {
@@ -61,5 +66,9 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
 
     override fun getBrand(): String {
         return car.brand
+    }
+
+    override fun persistCar() {
+        CarRepository.persistCar(car)
     }
 }

@@ -1,6 +1,5 @@
 package br.com.caiogandra.carcatalog.completemodellist.viewmodel
 
-import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LiveData
 import android.view.View
 import android.widget.RadioGroup
@@ -17,7 +16,7 @@ import br.com.caiogandra.carcatalog.newcar.controller.FragmentController
 class CompleteModelListViewModel(private val fipeRepositoryImpl: FipeRepositoryImpl,
                                  private val carController: CarController,
                                  private val fragmentController: FragmentController,
-                                 override var view: CompleteModelListView) : BaseViewModel<CompleteModelListView>() {
+                                 override var view: CompleteModelListView?) : BaseViewModel<CompleteModelListView>() {
 
     private var selectedCompleteModel: Int = -1
 
@@ -27,7 +26,7 @@ class CompleteModelListViewModel(private val fipeRepositoryImpl: FipeRepositoryI
         return fipeRepositoryImpl.fetchModels(carController.getBrand())
     }
 
-    fun fetchCompleteCar(fipeCode: String, year: String): LiveData<DataWrapper<CompleteCar>> {
+    fun fetchCompleteCar(fipeCode: String, year: String): LiveData<DataWrapper<List<CompleteCar>>> {
         return fipeRepositoryImpl.fetchCompleteCar(fipeCode, year)
     }
 
@@ -37,9 +36,9 @@ class CompleteModelListViewModel(private val fipeRepositoryImpl: FipeRepositoryI
         carController.updateModel(completeModel.model)
         carController.updateYear(completeModel.year)
         carController.updateFipeCode(completeModel.fipeCode)
-        val view = this.view
+        carController.persistCar()
 
-        view!!.showSummaryDialog(completeModel.fipeCode, completeModel.year)
+        this.view!!.showSummaryDialog(completeModel.fipeCode, completeModel.year)
     }
 
     fun onCompleteModelChanged(@Suppress("UNUSED_PARAMETER") radioGroup: RadioGroup, checkedId: Int) {
@@ -50,5 +49,11 @@ class CompleteModelListViewModel(private val fipeRepositoryImpl: FipeRepositoryI
     fun buttonEnabled(): Boolean {
         return selectedCompleteModel > 0
     }
+
+
+    fun goToCarList() {
+        fragmentController.exitFlow()
+    }
+
 
 }

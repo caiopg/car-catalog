@@ -12,7 +12,7 @@ import br.com.caiogandra.carcatalog.carlist.viewmodel.CarListItemViewModel
 import br.com.caiogandra.carcatalog.databinding.ItemCarListBinding
 import br.com.caiogandra.carcatalog.model.Car
 
-class CarListAdapter(private val application: Application, private val cars : List<Car>) : RecyclerView.Adapter<CarListAdapter.CarListViewHolder>() {
+class CarListAdapter(private val application: Application, var cars : List<Car>) : RecyclerView.Adapter<CarListAdapter.CarListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarListViewHolder {
 

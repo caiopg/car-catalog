@@ -11,6 +11,6 @@
 
     <string name="complete_model_list.list.title">Selecione o modelo e ano:</string>
     <string name="complete_model_list.button.text">Criar</string>
-    <string name="complete_model_list.dialog.title">Veiculo novo criado!</string>
-    <string name="complete_model_list.dialog.text">O Veiculo %s %s, ano %s, possui valor de <b>%s</b>.</string>
+    <string name="complete_model_list.dialog.title">Carro novo criado!</string>
+    <string name="complete_model_list.dialog.text">Foi criado um carro com as seguintes informações:\n\nMarca: %s\nModelo: %s\nAno: %s\n\nValor: %s.</string>
 </resources>

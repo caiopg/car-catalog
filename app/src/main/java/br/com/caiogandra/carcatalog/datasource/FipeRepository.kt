@@ -12,5 +12,5 @@ interface FipeRepository {
 
     fun fetchModels(brand: String): LiveData<DataWrapper<List<CompleteModel>>>
 
-    fun fetchCompleteCar(fipeCode: String, year: String): LiveData<DataWrapper<CompleteCar>>
+    fun fetchCompleteCar(fipeCode: String, year: String): LiveData<DataWrapper<List<CompleteCar>>>
 }

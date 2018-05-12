@@ -2,6 +2,7 @@ package br.com.caiogandra.carcatalog.datasource
 
 import br.com.caiogandra.carcatalog.model.Car
 import com.vicpin.krealmextensions.queryAll
+import com.vicpin.krealmextensions.save
 
 object CarRepository {
 
@@ -11,6 +12,10 @@ object CarRepository {
 
     fun fetchTotalCars(): Int {
         return fetchAllCars().size
+    }
+
+    fun persistCar(car: Car) {
+        car.save()
     }
 
 }

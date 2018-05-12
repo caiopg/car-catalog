@@ -16,6 +16,6 @@ interface FipeApi {
     fun fetchModels(@Path("brand") brand: String): Call<List<CompleteModel>>
 
     @GET("/cars/{fipeCode}/{year}")
-    fun fetchValue(@Path("fipeCode") fipeCode: String, @Path("year") year: String): Call<CompleteCar>
+    fun fetchValue(@Path("fipeCode") fipeCode: String, @Path("year") year: String): Call<List<CompleteCar>>
 
 }

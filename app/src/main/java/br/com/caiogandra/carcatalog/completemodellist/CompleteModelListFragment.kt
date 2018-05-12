@@ -26,14 +26,13 @@ import javax.inject.Inject
 class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
 
     companion object {
-        val TAG = CompleteModelListFragment::class.simpleName!!
-
         fun newInstance(): CompleteModelListFragment {
             return CompleteModelListFragment()
         }
     }
 
     private lateinit var binding: FragmentCompleteModelListBinding
+    private val valueReal = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
 
     @Inject lateinit var viewModel: CompleteModelListViewModel
 
@@ -81,22 +80,30 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
     }
 
     override fun showSummaryDialog(fipeCode: String, year: String) {
-        viewModel.fetchCompleteCar(fipeCode, year).observe(this, NetworkObserver(object: NetworkListener<CompleteCar>{
-            override fun onSuccess(dataWrapper: CompleteCar?) {
+        viewModel.fetchCompleteCar(fipeCode, year).observe(this, NetworkObserver(object: NetworkListener<List<CompleteCar>>{
+            override fun onSuccess(dataWrapper: List<CompleteCar>?) {
+                val carResponse = dataWrapper!![0]
+
                 val builder = context?.let { AlertDialog.Builder(it) }
 
                 if (builder != null) {
                     with(builder) {
                         setTitle(R.string.complete_model_list_dialog_title)
 
-                        val ptBr = Locale("pt", "BR")
-                        val valueReal = NumberFormat.getCurrencyInstance(ptBr).format(dataWrapper!!.value)
                         with(dataWrapper) {
                             val content = String.format(getString(R.string.complete_model_list_dialog_text),
-                                    dataWrapper!!.brand, dataWrapper!!.model, dataWrapper!!.year, valueReal)
+                                    carResponse.brand,
+                                    carResponse.model,
+                                    carResponse.year,
+                                    valueReal.format(carResponse.value))
 
                         setMessage(content)
                         }
+
+                        setPositiveButton(R.string.general_ok, { dialog, which ->
+                            dialog.dismiss()
+                            viewModel.goToCarList()
+                        })
 
                         builder.create()
                         builder.show()

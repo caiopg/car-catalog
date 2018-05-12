@@ -20,7 +20,7 @@ class FipeRepositoryImpl @Inject constructor(private val fipeApi: FipeApi): Fipe
         return NetworkRequestHandler.doRequest(fipeApi.fetchBrands())
     }
 
-    override fun fetchCompleteCar(fipeCode: String, year: String): LiveData<DataWrapper<CompleteCar>> {
+    override fun fetchCompleteCar(fipeCode: String, year: String): LiveData<DataWrapper<List<CompleteCar>>> {
         return NetworkRequestHandler.doRequest(fipeApi.fetchValue(fipeCode, year))
     }
 }

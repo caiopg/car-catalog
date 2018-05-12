@@ -14,4 +14,6 @@ interface CarController {
 
     fun getBrand(): String
 
+    fun persistCar()
+
 }
