@@ -68,7 +68,7 @@ class CarListActivity: BaseActivity(), CarListView {
         } else {
             adapter = CarListAdapter(application, cars)
             val linearLayoutManager = LinearLayoutManager(this)
-            linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
+            linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
             recyclerView.layoutManager = linearLayoutManager
             recyclerView.adapter = adapter
