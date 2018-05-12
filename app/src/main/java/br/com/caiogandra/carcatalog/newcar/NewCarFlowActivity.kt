@@ -12,6 +12,7 @@ import br.com.caiogandra.carcatalog.completemodellist.CompleteModelListFragment
 import br.com.caiogandra.carcatalog.datasource.CarRepository
 import br.com.caiogandra.carcatalog.newcar.controller.CarController
 import br.com.caiogandra.carcatalog.newcar.controller.FragmentController
+import com.pawegio.kandroid.v
 import dagger.android.AndroidInjection
 
 class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
@@ -48,19 +49,10 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
         car.brand = brand
     }
 
-    override fun updateModel(model: String) {
+    override fun updateCar(model: String, year: String, value: Int, fipeCode: String) {
         car.model = model
-    }
-
-    override fun updateYear(year: String) {
         car.year = year
-    }
-
-    override fun updateValue(value: Int) {
         car.value = value
-    }
-
-    override fun updateFipeCode(fipeCode: String) {
         car.fipeCode = fipeCode
     }
 

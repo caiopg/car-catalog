@@ -35,13 +35,9 @@ class CompleteModelListViewModel(private val fipeRepositoryImpl: FipeRepositoryI
         this.view!!.showSummaryDialog(completeModel.fipeCode, completeModel.year)
     }
 
-    fun updateCarObject(model: String, year: String, fipeCode: String, value: Int) {
-        carController.updateModel(model)
-        carController.updateYear(year)
-        carController.updateFipeCode(fipeCode)
-        carController.updateValue(value)
+    fun updateCar(model: String, year: String, fipeCode: String, value: Int) {
+        carController.updateCar(model, year, value, fipeCode)
         carController.persistCar()
-
     }
 
     fun onCompleteModelChanged(@Suppress("UNUSED_PARAMETER") radioGroup: RadioGroup, checkedId: Int) {

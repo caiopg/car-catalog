@@ -83,7 +83,7 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
         viewModel.fetchCompleteCar(fipeCode, year).observe(this, NetworkObserver(object: NetworkListener<List<CompleteCar>>{
             override fun onSuccess(dataWrapper: List<CompleteCar>?) {
                 val carResponse = dataWrapper!![0]
-                viewModel.updateCarObject(carResponse.model, carResponse.year,
+                viewModel.updateCar(carResponse.model, carResponse.year,
                         carResponse.fipeCode, carResponse.value)
 
                 val builder = context?.let { AlertDialog.Builder(it) }
