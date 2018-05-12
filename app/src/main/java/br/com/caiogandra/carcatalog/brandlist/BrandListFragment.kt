@@ -39,7 +39,7 @@ class BrandListFragment: BaseFragment() {
 
         viewModel.fetchBrands().observe(
                 this,
-                NetworkObserver(object: NetworkListener<List<Brand>>{
+                NetworkObserver(object: NetworkListener<List<Brand>> {
                     override fun onSuccess(dataWrapper: List<Brand>?) {
                         updateRadioGroup(dataWrapper)
                     }
@@ -60,7 +60,10 @@ class BrandListFragment: BaseFragment() {
     }
 
     private fun updateRadioGroup(brands: List<Brand>?) {
-        brands?.forEachIndexed { index, brand ->
+
+        val sortedList = brands?.sortedWith(compareBy({it.brand}))
+
+        sortedList?.forEachIndexed { index, brand ->
             var radioButton = RadioButton(activity)
             radioButton.text = brand.brand
             radioButton.id = index
@@ -71,8 +74,8 @@ class BrandListFragment: BaseFragment() {
             binding.brandListRadioGroup.addView(radioButton, layoutParams)
         }
 
-        if(brands != null) {
-            viewModel.brands = brands
+        if(sortedList != null) {
+            viewModel.brands = sortedList
         }
     }
 

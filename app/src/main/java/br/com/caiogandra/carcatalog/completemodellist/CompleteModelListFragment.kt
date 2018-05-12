@@ -63,7 +63,10 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
     }
 
     private fun updateRadioGroup(completeModels: List<CompleteModel>?) {
-        completeModels?.forEachIndexed { index, completeModel ->
+
+        val sortedList = completeModels?.sortedWith(compareBy({it.model}, {it.year}))
+
+        sortedList?.forEachIndexed { index, completeModel ->
             var radioButton = RadioButton(activity)
             radioButton.text = completeModel.model + " - " + completeModel.year
             radioButton.id = index
@@ -74,8 +77,8 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
             binding.completeModelListRadioGroup.addView(radioButton, layoutParams)
         }
 
-        if(completeModels != null) {
-            viewModel.completeModels = completeModels
+        if(sortedList != null) {
+            viewModel.completeModels = sortedList
         }
     }
 
