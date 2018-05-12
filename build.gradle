@@ -1,8 +1,21 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+
     ext.kotlin_version = '1.2.30'
     ext.realm = '5.1.0'
+    ext.databinding = '3.1.2'
+    ext.support = '27.1.1'
+    ext.supportconstraint = '1.1.0'
+    ext.lifecycle = '1.1.1'
+    ext.kandroid = '0.8.7'
+    ext.krealmextensions = '2.2.0'
+    ext.dagger = '2.15'
+    ext.retrofit2 = '2.4.0'
+    ext.okhttp3 = '3.10.0'
+    ext.junit = '4.12'
+    ext.runner = '1.0.2'
+    ext.espresso = '3.0.2'
 
     repositories {
         google()
