@@ -1,7 +1,6 @@
 package br.com.caiogandra.carcatalog.app.di
 
 import br.com.caiogandra.carcatalog.app.App
-import br.com.caiogandra.carcatalog.brandlist.viewmodel.BrandListViewModel
 import br.com.caiogandra.carcatalog.datasource.di.DataSourceModule
 import br.com.caiogandra.carcatalog.network.di.NetworkModule
 import dagger.Component

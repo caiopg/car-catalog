@@ -15,7 +15,6 @@ import br.com.caiogandra.carcatalog.databinding.FragmentBrandListBinding
 import br.com.caiogandra.carcatalog.model.response.Brand
 import br.com.caiogandra.carcatalog.network.listener.NetworkListener
 import br.com.caiogandra.carcatalog.network.request.NetworkObserver
-import com.pawegio.kandroid.longToast
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 

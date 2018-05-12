@@ -1,7 +1,6 @@
 package br.com.caiogandra.carcatalog.carlist.adapter
 
 import android.app.Application
-import android.content.Context
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

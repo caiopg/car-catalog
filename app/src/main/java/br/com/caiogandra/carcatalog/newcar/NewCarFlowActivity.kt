@@ -3,19 +3,17 @@ package br.com.caiogandra.carcatalog.newcar
 import android.app.Activity
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.view.MenuItem
 import br.com.caiogandra.carcatalog.R
 import br.com.caiogandra.carcatalog.base.BaseActivity
 import br.com.caiogandra.carcatalog.brandlist.BrandListFragment
-import br.com.caiogandra.carcatalog.databinding.ActivityCarListBinding
-import br.com.caiogandra.carcatalog.model.Car
 import br.com.caiogandra.carcatalog.completemodellist.CompleteModelListFragment
+import br.com.caiogandra.carcatalog.databinding.ActivityCarListBinding
 import br.com.caiogandra.carcatalog.datasource.CarRepository
+import br.com.caiogandra.carcatalog.model.Car
 import br.com.caiogandra.carcatalog.newcar.controller.CarController
 import br.com.caiogandra.carcatalog.newcar.controller.FragmentController
-import com.pawegio.kandroid.v
 import dagger.android.AndroidInjection
-import android.content.Intent
-import android.view.MenuItem
 
 
 class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
