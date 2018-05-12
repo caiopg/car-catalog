@@ -36,6 +36,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.carBrand}"
                     android:ems="12"
+                    android:singleLine="true"
                     android:ellipsize="end"
                     tools:text="Brand" />
 
@@ -44,6 +45,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.carModel}"
                     android:ems="12"
+                    android:singleLine="true"
                     android:ellipsize="end"
                     tools:text="Model"/>
 
@@ -52,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.carYear}"
                     android:ems="12"
+                    android:singleLine="true"
                     android:ellipsize="end"
                     tools:text="Year"/>
 

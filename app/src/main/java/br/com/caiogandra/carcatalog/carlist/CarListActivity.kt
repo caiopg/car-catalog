@@ -30,6 +30,8 @@ class CarListActivity: BaseActivity(), CarListView {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityCarListBinding>(this, R.layout.activity_car_list)
 
+        updateToolbarTitle(R.string.car_list_toolbar_title)
+
         binding.viewModel = viewModel
     }
 

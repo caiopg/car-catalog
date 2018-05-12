@@ -3,6 +3,7 @@
 
     <string name="general.ok">OK</string>
 
+    <string name="car_list.toolbar.title">Lista de carros</string>
     <string name="car_list.menu.add">Adicionar carro</string>
     <string name="car_list.list.empty">Sua lista de carros está vazia.\nClique em "+" para adicionar carros.</string>
 
@@ -13,4 +14,6 @@
     <string name="complete_model_list.button.text">Criar</string>
     <string name="complete_model_list.dialog.title">Carro novo criado!</string>
     <string name="complete_model_list.dialog.text">Foi criado um carro com as seguintes informações:\n\nMarca: %s\nModelo: %s\nAno: %s\n\nValor: %s.</string>
+
+    <string name="new_car.toolbat.title">Novo carro</string>
 </resources>

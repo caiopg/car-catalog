@@ -18,7 +18,7 @@ import dagger.android.AndroidInjection
 class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
 
     companion object {
-        val REQUEST_CODE = 1
+        const val REQUEST_CODE = 1
     }
 
     var car: Car = Car(id = CarRepository.fetchTotalCars())
@@ -28,6 +28,8 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
 
         super.onCreate(savedInstanceState)
         DataBindingUtil.setContentView<ActivityCarListBinding>(this, R.layout.activity_new_car_flow)
+
+        updateToolbarTitle(R.string.new_car_toolbat_title)
 
         startFlow()
     }
