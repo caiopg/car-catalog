@@ -57,11 +57,11 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
     }
 
     override fun updateValue(value: Int) {
-        car.value
+        car.value = value
     }
 
     override fun updateFipeCode(fipeCode: String) {
-        car.fipeCode
+        car.fipeCode = fipeCode
     }
 
     override fun getBrand(): String {

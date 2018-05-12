@@ -19,6 +19,8 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "API_BASE_URL", "\"http://fipe-api.herokuapp.com/\"")
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {

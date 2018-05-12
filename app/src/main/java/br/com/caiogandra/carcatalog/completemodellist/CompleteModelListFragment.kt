@@ -83,6 +83,8 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
         viewModel.fetchCompleteCar(fipeCode, year).observe(this, NetworkObserver(object: NetworkListener<List<CompleteCar>>{
             override fun onSuccess(dataWrapper: List<CompleteCar>?) {
                 val carResponse = dataWrapper!![0]
+                viewModel.updateCarObject(carResponse.model, carResponse.year,
+                        carResponse.fipeCode, carResponse.value)
 
                 val builder = context?.let { AlertDialog.Builder(it) }
 
@@ -90,15 +92,13 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
                     with(builder) {
                         setTitle(R.string.complete_model_list_dialog_title)
 
-                        with(dataWrapper) {
-                            val content = String.format(getString(R.string.complete_model_list_dialog_text),
-                                    carResponse.brand,
-                                    carResponse.model,
-                                    carResponse.year,
-                                    valueReal.format(carResponse.value))
+                        val content = String.format(getString(R.string.complete_model_list_dialog_text),
+                                carResponse.brand,
+                                carResponse.model,
+                                carResponse.year,
+                                valueReal.format(carResponse.value))
 
                         setMessage(content)
-                        }
 
                         setPositiveButton(R.string.general_ok, { dialog, which ->
                             dialog.dismiss()
