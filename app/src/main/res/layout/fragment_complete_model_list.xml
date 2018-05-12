@@ -15,7 +15,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             app:layout_constrainedHeight="true"
             app:layout_constraintBottom_toTopOf="@+id/complete_model_list_next_button"
             app:layout_constraintTop_toTopOf="parent">
@@ -23,22 +23,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="153dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
+                    android:padding="8dp"
                     android:text="@string/complete_model_list.list.title" />
 
                 <RadioGroup
                     android:id="@+id/complete_model_list_radio_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:orientation="vertical"
                     android:onCheckedChanged="@{viewModel::onCompleteModelChanged}">
 
