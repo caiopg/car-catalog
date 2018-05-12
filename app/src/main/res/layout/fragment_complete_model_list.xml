@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -53,6 +52,14 @@
             android:enabled="@{viewModel.buttonEnabled()}"
             android:clickable="@{viewModel.buttonEnabled()}"
             app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <include layout="@layout/component_progress_bar"
+            android:id="@+id/complete_model_list_progress_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:visibility="gone"/>
 
     </android.support.constraint.ConstraintLayout>
 

@@ -54,6 +54,14 @@
             android:clickable="@{viewModel.buttonEnabled()}"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
+        <include layout="@layout/component_progress_bar"
+            android:id="@+id/brand_list_progress_bar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:visibility="gone"/>
+
     </android.support.constraint.ConstraintLayout>
 
 </layout>

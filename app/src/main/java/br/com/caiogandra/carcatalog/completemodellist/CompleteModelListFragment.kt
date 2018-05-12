@@ -40,11 +40,13 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_complete_model_list, container, false)
         binding.viewModel = viewModel
 
+        showView(binding.completeModelListProgressBar)
         viewModel.fetchCompleteModels().observe(
                 this,
                 NetworkObserver(object: NetworkListener<List<CompleteModel>> {
                     override fun onSuccess(dataWrapper: List<CompleteModel>?) {
                         updateRadioGroup(dataWrapper)
+                        dismissView(binding.completeModelListProgressBar)
                     }
 
                     override fun onException(throwable: Throwable?) {
@@ -83,6 +85,7 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
     }
 
     override fun showSummaryDialog(fipeCode: String, year: String) {
+        showView(binding.completeModelListProgressBar)
         viewModel.fetchCompleteCar(fipeCode, year).observe(this, NetworkObserver(object: NetworkListener<List<CompleteCar>>{
             override fun onSuccess(dataWrapper: List<CompleteCar>?) {
                 val carResponse = dataWrapper!![0]
@@ -110,6 +113,7 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
 
                         builder.create()
                         builder.show()
+                        dismissView(binding.completeModelListProgressBar)
                     }
                 }
             }
@@ -119,5 +123,4 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
             }
         }))
     }
-
 }

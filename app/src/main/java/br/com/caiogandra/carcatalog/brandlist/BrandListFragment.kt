@@ -37,11 +37,13 @@ class BrandListFragment: BaseFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_brand_list, container, false)
         binding.viewModel = viewModel
 
+        showView(binding.brandListProgressBar)
         viewModel.fetchBrands().observe(
                 this,
                 NetworkObserver(object: NetworkListener<List<Brand>> {
                     override fun onSuccess(dataWrapper: List<Brand>?) {
                         updateRadioGroup(dataWrapper)
+                        dismissView(binding.brandListProgressBar)
                     }
 
                     override fun onException(throwable: Throwable?) {
