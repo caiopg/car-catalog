@@ -3,6 +3,8 @@ package br.com.caiogandra.carcatalog.network.request
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import br.com.caiogandra.carcatalog.network.data.DataWrapper
+import br.com.caiogandra.carcatalog.network.exception.NetworkException
+import com.pawegio.kandroid.v
 import retrofit2.Call
 import retrofit2.Response
 
@@ -19,7 +21,8 @@ class NetworkRequestHandler {
                 }
 
                 override fun handleError(response: Response<R>?) {
-                    //todo
+                    dataWrapper.apiThrowable = NetworkException()
+                    liveData.value = dataWrapper
                 }
 
                 override fun handleThrowable(throwable: Throwable?) {

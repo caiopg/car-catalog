@@ -2,6 +2,7 @@ package br.com.caiogandra.carcatalog.completemodellist
 
 import android.content.Context
 import android.databinding.DataBindingUtil
+import android.os.Binder
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import br.com.caiogandra.carcatalog.completemodellist.viewmodel.CompleteModelLis
 import br.com.caiogandra.carcatalog.databinding.FragmentCompleteModelListBinding
 import br.com.caiogandra.carcatalog.model.response.CompleteCar
 import br.com.caiogandra.carcatalog.model.response.CompleteModel
+import br.com.caiogandra.carcatalog.network.exception.NetworkException
 import br.com.caiogandra.carcatalog.network.listener.NetworkListener
 import br.com.caiogandra.carcatalog.network.request.NetworkObserver
 import dagger.android.support.AndroidSupportInjection
@@ -50,7 +52,9 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
                     }
 
                     override fun onException(throwable: Throwable?) {
-                        //todo
+                        if (throwable != null) {
+                            handleError(throwable)
+                        }
                     }
                 })
         )
@@ -119,8 +123,19 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
             }
 
             override fun onException(throwable: Throwable?) {
-                //todo
+                dismissView(binding.completeModelListProgressBar)
+                if (throwable != null) {
+                    handleError(throwable)
+                }
             }
         }))
+    }
+
+    fun handleError(throwable: Throwable) {
+        if(throwable is NetworkException) {
+            showErrorSnackbar(R.string.error_snackbar_server_out)
+        } else {
+            showErrorSnackbar(R.string.error_snackbar_unexpected)
+        }
     }
 }

@@ -3,6 +3,9 @@
 
     <string name="general.ok">OK</string>
 
+    <string name="error_snackbar.server_out">Servidor está temporariamente indisponível</string>
+    <string name="error_snackbar.unexpected">Ocorreu um erro inesperado</string>
+
     <string name="car_list.toolbar.title">Lista de carros</string>
     <string name="car_list.menu.add">Adicionar carro</string>
     <string name="car_list.list.empty">Sua lista de carros está vazia.\nClique em "+" para adicionar carros.</string>

@@ -13,6 +13,7 @@ import br.com.caiogandra.carcatalog.base.BaseFragment
 import br.com.caiogandra.carcatalog.brandlist.viewmodel.BrandListViewModel
 import br.com.caiogandra.carcatalog.databinding.FragmentBrandListBinding
 import br.com.caiogandra.carcatalog.model.response.Brand
+import br.com.caiogandra.carcatalog.network.exception.NetworkException
 import br.com.caiogandra.carcatalog.network.listener.NetworkListener
 import br.com.caiogandra.carcatalog.network.request.NetworkObserver
 import dagger.android.support.AndroidSupportInjection
@@ -46,7 +47,12 @@ class BrandListFragment: BaseFragment() {
                     }
 
                     override fun onException(throwable: Throwable?) {
-                        //todo
+                        dismissView(binding.brandListProgressBar)
+                        if(throwable is NetworkException) {
+                            showErrorSnackbar(R.string.error_snackbar_server_out)
+                        } else {
+                            showErrorSnackbar(R.string.error_snackbar_unexpected)
+                        }
                     }
                 })
         )
