@@ -14,6 +14,9 @@ import br.com.caiogandra.carcatalog.newcar.controller.CarController
 import br.com.caiogandra.carcatalog.newcar.controller.FragmentController
 import com.pawegio.kandroid.v
 import dagger.android.AndroidInjection
+import android.content.Intent
+import android.view.MenuItem
+
 
 class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
 
@@ -30,8 +33,20 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
         DataBindingUtil.setContentView<ActivityCarListBinding>(this, R.layout.activity_new_car_flow)
 
         updateToolbarTitle(R.string.new_car_toolbat_title)
+        showToolbarCloseButton()
 
         startFlow()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun startFlow() {
