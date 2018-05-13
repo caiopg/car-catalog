@@ -39,8 +39,8 @@ dependencies {
 
     //kotlin
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinversion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinversion"
 
     //databinding
     kapt "com.android.databinding:compiler:$databinding"
@@ -74,6 +74,10 @@ dependencies {
 
     //okhttp3
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3"
+
+    //mockito
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp3"
+    testImplementation "org.mockito:mockito-core:$mockito"
 
     //tests
     testImplementation "junit:junit:$junit"
