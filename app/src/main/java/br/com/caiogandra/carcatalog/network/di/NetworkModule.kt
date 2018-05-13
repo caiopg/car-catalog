@@ -8,11 +8,13 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 class NetworkModule {
 
     @Provides
+    @Singleton
     fun providesFipeApi(): FipeApi {
         val client = OkHttpClient.Builder()
 
