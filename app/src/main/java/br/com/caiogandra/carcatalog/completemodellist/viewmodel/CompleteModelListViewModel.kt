@@ -46,7 +46,7 @@ class CompleteModelListViewModel(private val fipeRepositoryImpl: FipeRepositoryI
     }
 
     fun buttonEnabled(): Boolean {
-        return selectedCompleteModel > 0
+        return selectedCompleteModel >= 0
     }
 
 

@@ -35,7 +35,7 @@ class BrandListViewModel(private val fipeRepositoryImpl: FipeRepositoryImpl,
     }
 
     fun buttonEnabled(): Boolean {
-        return selectedBrandId > 0
+        return selectedBrandId >= 0
     }
 
 }
