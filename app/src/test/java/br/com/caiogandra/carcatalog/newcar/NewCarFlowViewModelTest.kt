@@ -4,14 +4,11 @@ import br.com.caiogandra.carcatalog.datasource.car.CarRepository
 import br.com.caiogandra.carcatalog.model.Car
 import br.com.caiogandra.carcatalog.newcar.viewmodel.NewCarFlowViewModel
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.BDDMockito
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
-import kotlin.reflect.jvm.internal.impl.load.java.components.JavaPropertyInitializerEvaluator
 
 @RunWith(MockitoJUnitRunner::class)
 class NewCarFlowViewModelTest {
@@ -67,5 +64,4 @@ class NewCarFlowViewModelTest {
         //THEN
         assertEquals(result, CAR_TEST_MODEL)
     }
-
 }
