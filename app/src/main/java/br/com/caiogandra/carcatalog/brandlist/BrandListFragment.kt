@@ -22,8 +22,6 @@ import javax.inject.Inject
 class BrandListFragment: BaseFragment() {
 
     companion object {
-        val TAG = BrandListFragment::class.simpleName!!
-
         fun newInstance(): BrandListFragment {
             return BrandListFragment()
         }

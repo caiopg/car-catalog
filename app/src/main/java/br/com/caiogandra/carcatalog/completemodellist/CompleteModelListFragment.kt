@@ -2,7 +2,6 @@ package br.com.caiogandra.carcatalog.completemodellist
 
 import android.content.Context
 import android.databinding.DataBindingUtil
-import android.os.Binder
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater

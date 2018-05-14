@@ -6,14 +6,14 @@ import android.widget.RadioGroup
 import br.com.caiogandra.carcatalog.BR
 import br.com.caiogandra.carcatalog.base.BaseViewModel
 import br.com.caiogandra.carcatalog.completemodellist.view.CompleteModelListView
-import br.com.caiogandra.carcatalog.datasource.fipe.FipeRepositoryImpl
+import br.com.caiogandra.carcatalog.datasource.fipe.FipeRepository
 import br.com.caiogandra.carcatalog.model.response.CompleteCar
 import br.com.caiogandra.carcatalog.model.response.CompleteModel
 import br.com.caiogandra.carcatalog.network.data.DataWrapper
 import br.com.caiogandra.carcatalog.newcar.controller.CarController
 import br.com.caiogandra.carcatalog.newcar.controller.FragmentController
 
-class CompleteModelListViewModel(private val fipeRepositoryImpl: FipeRepositoryImpl,
+class CompleteModelListViewModel(private val fipeRepository: FipeRepository,
                                  private val carController: CarController,
                                  private val fragmentController: FragmentController,
                                  override var view: CompleteModelListView?) : BaseViewModel<CompleteModelListView>() {
@@ -23,11 +23,11 @@ class CompleteModelListViewModel(private val fipeRepositoryImpl: FipeRepositoryI
     var completeModels: List<CompleteModel> = ArrayList()
 
     fun fetchCompleteModels(): LiveData<DataWrapper<List<CompleteModel>>> {
-        return fipeRepositoryImpl.fetchModels(carController.getBrand())
+        return fipeRepository.fetchModels(carController.getBrand())
     }
 
     fun fetchCompleteCar(fipeCode: String, year: String): LiveData<DataWrapper<List<CompleteCar>>> {
-        return fipeRepositoryImpl.fetchCompleteCar(fipeCode, year)
+        return fipeRepository.fetchCompleteCar(fipeCode, year)
     }
 
     fun onCreateClicked(@Suppress("UNUSED_PARAMETER") view: View) {

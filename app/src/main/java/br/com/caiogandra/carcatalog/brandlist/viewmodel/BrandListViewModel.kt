@@ -6,13 +6,13 @@ import android.widget.RadioGroup
 import br.com.caiogandra.carcatalog.BR
 import br.com.caiogandra.carcatalog.base.BaseView
 import br.com.caiogandra.carcatalog.base.BaseViewModel
-import br.com.caiogandra.carcatalog.datasource.fipe.FipeRepositoryImpl
+import br.com.caiogandra.carcatalog.datasource.fipe.FipeRepository
 import br.com.caiogandra.carcatalog.model.response.Brand
 import br.com.caiogandra.carcatalog.network.data.DataWrapper
 import br.com.caiogandra.carcatalog.newcar.controller.CarController
 import br.com.caiogandra.carcatalog.newcar.controller.FragmentController
 
-class BrandListViewModel(private val fipeRepositoryImpl: FipeRepositoryImpl,
+class BrandListViewModel(private val fipeRepository: FipeRepository,
                          private val carController: CarController,
                          private val fragmentController: FragmentController) : BaseViewModel<BaseView?>() {
 
@@ -21,7 +21,7 @@ class BrandListViewModel(private val fipeRepositoryImpl: FipeRepositoryImpl,
     var brands: List<Brand> = ArrayList()
 
     fun fetchBrands(): LiveData<DataWrapper<List<Brand>>> {
-        return fipeRepositoryImpl.fetchBrands()
+        return fipeRepository.fetchBrands()
     }
 
     fun onNextClicked(@Suppress("UNUSED_PARAMETER") view: View) {

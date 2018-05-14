@@ -4,7 +4,6 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import br.com.caiogandra.carcatalog.network.data.DataWrapper
 import br.com.caiogandra.carcatalog.network.exception.NetworkException
-import com.pawegio.kandroid.v
 import retrofit2.Call
 import retrofit2.Response
 

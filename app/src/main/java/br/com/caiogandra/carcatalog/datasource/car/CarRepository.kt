@@ -1,21 +1,12 @@
 package br.com.caiogandra.carcatalog.datasource.car
 
 import br.com.caiogandra.carcatalog.model.Car
-import com.vicpin.krealmextensions.queryAll
-import com.vicpin.krealmextensions.save
 
-object CarRepository {
+interface CarRepository {
 
-    fun fetchAllCars(): List<Car> {
-        return Car().queryAll()
-    }
+    fun fetchAllCars(): List<Car>
 
-    fun fetchTotalCars(): Int {
-        return fetchAllCars().size
-    }
+    fun fetchTotalCars(): Int
 
-    fun persistCar(car: Car) {
-        car.save()
-    }
-
+    fun persistCar(car: Car)
 }

@@ -1,6 +1,7 @@
 package br.com.caiogandra.carcatalog.newcar.di
 
 import android.arch.lifecycle.ViewModelProviders
+import br.com.caiogandra.carcatalog.carlist.viewmodel.factory.NewCarFlowViewModelFactory
 import br.com.caiogandra.carcatalog.newcar.NewCarFlowActivity
 import br.com.caiogandra.carcatalog.newcar.controller.CarController
 import br.com.caiogandra.carcatalog.newcar.controller.FragmentController
@@ -22,7 +23,7 @@ class NewCarFlowActivityModule {
     }
 
     @Provides
-    fun providesNewCarFlowViewModel(activity: NewCarFlowActivity): NewCarFlowViewModel {
-        return ViewModelProviders.of(activity).get(NewCarFlowViewModel::class.java)
+    fun providesNewCarFlowViewModel(activity: NewCarFlowActivity, factory: NewCarFlowViewModelFactory): NewCarFlowViewModel {
+        return ViewModelProviders.of(activity, factory).get(NewCarFlowViewModel::class.java)
     }
 }

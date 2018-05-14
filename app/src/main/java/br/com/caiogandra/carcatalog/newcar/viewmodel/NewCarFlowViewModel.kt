@@ -6,9 +6,9 @@ import br.com.caiogandra.carcatalog.datasource.car.CarRepository
 import br.com.caiogandra.carcatalog.model.Car
 
 
-class NewCarFlowViewModel: BaseViewModel<BaseView?>() {
+class NewCarFlowViewModel(private val carRepository: CarRepository): BaseViewModel<BaseView?>() {
 
-    var car: Car = Car(id = CarRepository.fetchTotalCars())
+    var car: Car = Car(id = carRepository.fetchTotalCars())
 
     fun updateBrand(brand: String) {
         car.brand = brand
@@ -26,7 +26,7 @@ class NewCarFlowViewModel: BaseViewModel<BaseView?>() {
     }
 
     fun persistCar() {
-        CarRepository.persistCar(car)
+        carRepository.persistCar(car)
     }
 
 }

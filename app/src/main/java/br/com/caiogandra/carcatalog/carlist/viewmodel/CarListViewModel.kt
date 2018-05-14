@@ -7,10 +7,10 @@ import br.com.caiogandra.carcatalog.base.BaseViewModel
 import br.com.caiogandra.carcatalog.carlist.view.CarListView
 import br.com.caiogandra.carcatalog.datasource.car.CarRepository
 
-class CarListViewModel(carListView: CarListView) : BaseViewModel<CarListView>() {
+class CarListViewModel(private val carRepository: CarRepository, carListView: CarListView) : BaseViewModel<CarListView>() {
 
     @Bindable
-    var cars = CarRepository.fetchAllCars()
+    var cars = carRepository.fetchAllCars()
 
     @Bindable
     override var view: CarListView? = carListView
@@ -26,7 +26,7 @@ class CarListViewModel(carListView: CarListView) : BaseViewModel<CarListView>() 
     }
 
     fun updateData() {
-        cars = CarRepository.fetchAllCars()
+        cars = carRepository.fetchAllCars()
         registry.notifyChange(this, BR._all)
     }
 }
