@@ -110,7 +110,7 @@ class CompleteModelListFragment: BaseFragment(), CompleteModelListView {
 
                         setMessage(content)
 
-                        setPositiveButton(R.string.general_ok, { dialog, which ->
+                        setPositiveButton(R.string.general_ok, { dialog, _ ->
                             dialog.dismiss()
                             viewModel.goToCarList()
                         })

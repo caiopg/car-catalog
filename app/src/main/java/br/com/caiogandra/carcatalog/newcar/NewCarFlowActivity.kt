@@ -13,7 +13,9 @@ import br.com.caiogandra.carcatalog.datasource.car.CarRepository
 import br.com.caiogandra.carcatalog.model.Car
 import br.com.caiogandra.carcatalog.newcar.controller.CarController
 import br.com.caiogandra.carcatalog.newcar.controller.FragmentController
+import br.com.caiogandra.carcatalog.newcar.viewmodel.NewCarFlowViewModel
 import dagger.android.AndroidInjection
+import javax.inject.Inject
 
 
 class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
@@ -22,7 +24,7 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
         const val REQUEST_CODE = 1
     }
 
-    var car: Car = Car(id = CarRepository.fetchTotalCars())
+    @Inject lateinit var viewModel: NewCarFlowViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -61,21 +63,18 @@ class NewCarFlowActivity: BaseActivity(), FragmentController, CarController {
     }
 
     override fun updateBrand(brand: String) {
-        car.brand = brand
+        viewModel.updateBrand(brand)
     }
 
     override fun updateCar(model: String, year: String, value: Int, fipeCode: String) {
-        car.model = model
-        car.year = year
-        car.value = value
-        car.fipeCode = fipeCode
+        viewModel.updateCar(model, year, value, fipeCode)
     }
 
     override fun getBrand(): String {
-        return car.brand
+        return viewModel.getBrand()
     }
 
     override fun persistCar() {
-        CarRepository.persistCar(car)
+        viewModel.persistCar()
     }
 }
