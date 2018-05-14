@@ -1,7 +1,6 @@
-package br.com.caiogandra.carcatalog.datasource.implementation
+package br.com.caiogandra.carcatalog.datasource.fipe
 
 import android.arch.lifecycle.LiveData
-import br.com.caiogandra.carcatalog.datasource.FipeRepository
 import br.com.caiogandra.carcatalog.model.response.Brand
 import br.com.caiogandra.carcatalog.model.response.CompleteCar
 import br.com.caiogandra.carcatalog.model.response.CompleteModel

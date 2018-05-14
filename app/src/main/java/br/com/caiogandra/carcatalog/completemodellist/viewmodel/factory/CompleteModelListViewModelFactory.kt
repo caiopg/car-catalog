@@ -4,7 +4,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import br.com.caiogandra.carcatalog.completemodellist.view.CompleteModelListView
 import br.com.caiogandra.carcatalog.completemodellist.viewmodel.CompleteModelListViewModel
-import br.com.caiogandra.carcatalog.datasource.implementation.FipeRepositoryImpl
+import br.com.caiogandra.carcatalog.datasource.fipe.FipeRepositoryImpl
 import br.com.caiogandra.carcatalog.newcar.controller.CarController
 import br.com.caiogandra.carcatalog.newcar.controller.FragmentController
 import javax.inject.Inject

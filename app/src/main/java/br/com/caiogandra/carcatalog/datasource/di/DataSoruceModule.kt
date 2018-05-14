@@ -1,7 +1,7 @@
 package br.com.caiogandra.carcatalog.datasource.di
 
-import br.com.caiogandra.carcatalog.datasource.FipeRepository
-import br.com.caiogandra.carcatalog.datasource.implementation.FipeRepositoryImpl
+import br.com.caiogandra.carcatalog.datasource.fipe.FipeRepository
+import br.com.caiogandra.carcatalog.datasource.fipe.FipeRepositoryImpl
 import dagger.Binds
 import dagger.Module
 

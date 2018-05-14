@@ -5,7 +5,7 @@ import android.view.View
 import br.com.caiogandra.carcatalog.BR
 import br.com.caiogandra.carcatalog.base.BaseViewModel
 import br.com.caiogandra.carcatalog.carlist.view.CarListView
-import br.com.caiogandra.carcatalog.datasource.CarRepository
+import br.com.caiogandra.carcatalog.datasource.car.CarRepository
 
 class CarListViewModel(carListView: CarListView) : BaseViewModel<CarListView>() {
 

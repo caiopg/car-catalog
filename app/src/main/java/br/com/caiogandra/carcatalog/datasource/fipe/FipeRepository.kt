@@ -1,4 +1,4 @@
-package br.com.caiogandra.carcatalog.datasource
+package br.com.caiogandra.carcatalog.datasource.fipe
 
 import android.arch.lifecycle.LiveData
 import br.com.caiogandra.carcatalog.model.response.Brand

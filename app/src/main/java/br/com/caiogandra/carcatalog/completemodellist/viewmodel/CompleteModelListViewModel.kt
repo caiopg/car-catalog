@@ -6,7 +6,7 @@ import android.widget.RadioGroup
 import br.com.caiogandra.carcatalog.BR
 import br.com.caiogandra.carcatalog.base.BaseViewModel
 import br.com.caiogandra.carcatalog.completemodellist.view.CompleteModelListView
-import br.com.caiogandra.carcatalog.datasource.implementation.FipeRepositoryImpl
+import br.com.caiogandra.carcatalog.datasource.fipe.FipeRepositoryImpl
 import br.com.caiogandra.carcatalog.model.response.CompleteCar
 import br.com.caiogandra.carcatalog.model.response.CompleteModel
 import br.com.caiogandra.carcatalog.network.data.DataWrapper

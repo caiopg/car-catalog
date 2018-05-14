@@ -1,4 +1,4 @@
-package br.com.caiogandra.carcatalog.datasource
+package br.com.caiogandra.carcatalog.datasource.car
 
 import br.com.caiogandra.carcatalog.model.Car
 import com.vicpin.krealmextensions.queryAll

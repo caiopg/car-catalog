@@ -6,7 +6,7 @@ import android.widget.RadioGroup
 import br.com.caiogandra.carcatalog.BR
 import br.com.caiogandra.carcatalog.base.BaseView
 import br.com.caiogandra.carcatalog.base.BaseViewModel
-import br.com.caiogandra.carcatalog.datasource.implementation.FipeRepositoryImpl
+import br.com.caiogandra.carcatalog.datasource.fipe.FipeRepositoryImpl
 import br.com.caiogandra.carcatalog.model.response.Brand
 import br.com.caiogandra.carcatalog.network.data.DataWrapper
 import br.com.caiogandra.carcatalog.newcar.controller.CarController
