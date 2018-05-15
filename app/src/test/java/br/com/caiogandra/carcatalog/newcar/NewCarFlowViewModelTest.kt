@@ -20,7 +20,6 @@ class NewCarFlowViewModelTest {
     private val CAR_TEST_FIPECODE = "Car Test Fipe Code"
 
     @Mock private lateinit var carRepository: CarRepository
-    @Mock private lateinit var testCar: Car
 
     private lateinit var testNewCarFlowViewModel: NewCarFlowViewModel
 
