@@ -19,6 +19,7 @@ buildscript {
     ext.runner = '1.0.2'
     ext.espresso = '3.0.2'
     ext.mockito = '2.10.0'
+    ext.mockitokotlin = '1.5.0'
 
     repositories {
         google()
